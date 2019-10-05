@@ -80,4 +80,9 @@ select user_mst.userenrollment, user_mst.userid, user_mst.contact, user_mst.emai
 
 INSERT INTO user_branch_semester_subject_mapping (userid, subjectid,branchid,semesterid) VALUES(3,4,1,1);
 
+create table group_teacher_mapping(mapid integer AUTO_INCREMENT,groupid integer UNIQUE NOT NULL REFERENCES group_mst(groupid)
+ON DELETE CASCADE,teacherid integer UNIQUE NOT NULL REFERENCES user_mst(uid) ON DELETE CASCADE, status char(1) DEFAULT 'Y',primary key(mapid));
+
+create table question_subject_mapping(mapid integer AUTO_INCREMENT,questionid integer UNIQUE NOT NULL REFERENCES question_mst(questionid) ON DELETE CASCADE,subjectid integer UNIQUE NOT NULL REFERENCES subject_mst(sid) ON DELETE CASCADE,status char(1) DEFAULT 'Y',primary key(mapid));
+
 
